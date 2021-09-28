@@ -1,5 +1,4 @@
-from api.getRest import getRest
-from api.getGraph import getGraph
+from api.getData import getData
 from utils.generateCSV import generateCSV
 from dotenv import load_dotenv
 
@@ -12,7 +11,7 @@ def main():
     load_dotenv()
 
     print('Getting REST data...')
-    restData = getRest(1)
+    restData = getData('rest', 1)
     restItems = restData['items']
     # while restData['quota_remaining'] > 0:
     #     print('Quota remaining: ' + str(restData['quota_remaining']))
@@ -21,7 +20,7 @@ def main():
     #     restItems += restData['items']
 
     print('Getting GRAPHQL data...')
-    graphData = getGraph(1)
+    graphData = getData('graphql', 1)
     graphItems = graphData['items']
     # while graphData['quota_remaining'] > 0:
     #     print('Quota remaining: ' + str(graphData['quota_remaining']))

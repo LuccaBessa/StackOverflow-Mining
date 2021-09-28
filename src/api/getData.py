@@ -4,9 +4,8 @@ from utils.constants import *
 import time
 
 
-def getRest(page):
+def getData(tag, page):
     key = os.getenv('ACCESS_TOKEN')
-    tagged = 'graphql'
     fromdate_timestamp = time.mktime(
         time.strptime(fromdate, '%Y-%m-%d %H:%M:%S')).__floor__()
     todate_timestamp = time.mktime(time.strptime(
@@ -20,7 +19,7 @@ def getRest(page):
             'site': site,
             'filter': filter,
             'key': key,
-            'tagged': tagged,
+            'tagged': tag,
             'fromdate': fromdate_timestamp,
             'todate': todate_timestamp,
             'sort': sort,
