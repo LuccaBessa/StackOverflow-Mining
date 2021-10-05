@@ -21,9 +21,12 @@ def generateCSV(json, filename):
         writer.writerow(headers)
 
         for question in json:
+            user_id = 'not informed' if question['owner'] == {
+            } else question['owner']['user_id']
+
             writer.writerow([
                 question['question_id'],
-                question['owner']['user_id'],
+                user_id,
                 question['score'],
                 question['view_count'],
                 question['up_vote_count'],

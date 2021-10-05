@@ -14,19 +14,21 @@ def main():
     restData = getData('rest', 1)
     restItems = restData['items']
     # while restData['quota_remaining'] > 0:
-    #     print('Quota remaining: ' + str(restData['quota_remaining']))
-    #     restPage += 1
-    #     restData = getRest(restPage)
-    #     restItems += restData['items']
+    while restItems.__len__() < 200:
+        restPage += 1
+        restData = getData('rest', restPage)
+        restItems += restData['items']
 
     print('Getting GRAPHQL data...')
     graphData = getData('graphql', 1)
     graphItems = graphData['items']
     # while graphData['quota_remaining'] > 0:
-    #     print('Quota remaining: ' + str(graphData['quota_remaining']))
-    #     graphPage += 1
-    #     graphData = getRest(graphPage)
-    #     restItems += restData['items']
+    while graphItems.__len__() < 200:
+        graphPage += 1
+        graphData = getData('graphql', graphPage)
+        graphItems += graphData['items']
+
+    print(restItems.__len__(), graphItems.__len__())
 
     generateCSV(restItems, 'rest')
     generateCSV(graphItems, 'graph')
